@@ -48,6 +48,12 @@ Browser configuration:
 3) Firefox: go to about:config, "say you'll be careful", change the value for 'network.negotiate-auth.trusted-uris' into 'https://,http://example.com'
 
 
+Build/Run Instructions
+======================
+
+Build/run using: mvn jetty:run         (and have a cup of tea (coffee), if you happen to have an empty local maven repo)
+
+
 Available Servlets
 ==================
 
