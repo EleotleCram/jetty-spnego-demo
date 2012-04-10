@@ -29,7 +29,7 @@ Domain username password: Z3usP@55
         EXAMPLE.COM = {
                 kdc = adserver.example.com
 		default_domain = EXAMPLE.COM
-		kpasswd_server = adserver.paragon.nl
+		kpasswd_server = adserver.example.com
         }
 
 [domain_realm]
