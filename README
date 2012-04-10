@@ -1,0 +1,69 @@
+SPNEGO Servlet + Microsoft PAC demo
+===================================
+
+
+Introduction
+============
+
+This project demonstrates the use of the filter found at[1] as a simple HttpServlet using Jetty. So be sure to read their docs (especially their pre-flight routine).
+In addition it also demonstrate the use of the PAC parser found at[2] to parse the PAC information found in an Active Directory (or Samba 4) issued Kerberos ticket. This contains authorization information about the authenticated user principal (think: group information in the form of SID etc.).
+
+[1] http://spnego.sourceforge.net
+[2] http://jaaslounge.sourceforge.net/
+
+
+Used Settings
+=============
+
+Hostname: example.com
+SPN: HTTP/example.com
+Domain username: Zeus
+Domain username password: Z3usP@55
+
+/etc/krb5.conf:
+-->8--snip-->8--snip-->8---
+[libdefaults]
+        default_realm = EXAMPLE.COM
+
+[realms]
+        EXAMPLE.COM = {
+                kdc = adserver.example.com
+		default_domain = EXAMPLE.COM
+		kpasswd_server = adserver.paragon.nl
+        }
+
+[domain_realm]
+        .example.com = EXAMPLE.COM
+        example.com = EXAMPLE.COM
+
+[login]
+        krb4_convert = true
+        krb4_get_tickets = false
+-->8--snip-->8--snip-->8---
+
+Browser configuration:
+
+1) IE:  Configure trusted websites to include "http://example.com" and allow negotiation for that website (@TODO be more specific)
+2) Google-chrome:  start from command line with: google-chrome --auth-server-whitelist="*example.com"
+3) Firefox: goto about:config, "say you'll be careful", change the value for 'network.negotiate-auth.trusted-uris' into 'https://,http://example.com'
+
+
+Available Servlets
+==================
+
+1) http://example.com:8080/filtered/spnego
+
+	Shows how to use the forked spnego-pac filter to authenticate users against a Kerberos (i.e. Active Directory) and how to read the logon info (PAC, e.g. group SID) from the authenticated principal (for kerberos tickets issues by Active Directory, Samba v4).
+
+2) http://example.com:8080/spnego
+
+	Works like 1) but exposes the underlying code in a single file (for people how like to know how it works)
+
+
+Notes
+=====
+
+1) If you're client is on a posix platform (linux, etc.), be sure to run 'kinit' first, otherwise you will not be able to authenticate.
+2) In Windows you cannot run the server and the client on the same host, because Windows will try to use NTLM then, which you don't want because it's insecure.
+3) There are probably more caveats that I now fail to remember/mention, sorry about that.
+
