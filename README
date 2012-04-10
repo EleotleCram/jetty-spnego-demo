@@ -6,11 +6,11 @@ Introduction
 ============
 
 This project demonstrates the use of the filter found at[1] as a simple HttpServlet using Jetty. So be sure to read their docs (especially their pre-flight routine).
-In addition it also demonstrate the use of the PAC parser found at[2] to parse the PAC information found in an Active Directory (or Samba 4) issued Kerberos ticket. This contains authorization information about the authenticated user principal (think: group information in the form of SID etc.).
+In addition it also demonstrate the use of the PAC parser found at[2] to parse the PAC information found in an Active Directory (or Samba 4) issued Kerberos ticket[3]. This contains authorization information about the authenticated user principal (think: group information in the form of SID etc.).
 
 [1] http://spnego.sourceforge.net
 [2] http://jaaslounge.sourceforge.net/
-
+[3] http://appliedcrypto.com/spnego/pac/ms_kerberos_pac.html
 
 Used Settings
 =============
@@ -45,7 +45,7 @@ Browser configuration:
 
 1) IE:  Configure trusted websites to include "http://example.com" and allow negotiation for that website (@TODO be more specific)
 2) Google-chrome:  start from command line with: google-chrome --auth-server-whitelist="*example.com"
-3) Firefox: goto about:config, "say you'll be careful", change the value for 'network.negotiate-auth.trusted-uris' into 'https://,http://example.com'
+3) Firefox: go to about:config, "say you'll be careful", change the value for 'network.negotiate-auth.trusted-uris' into 'https://,http://example.com'
 
 
 Available Servlets
