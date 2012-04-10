@@ -21,6 +21,16 @@
 		<url-pattern>/filtered/spnego/*</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>SpnegoFilteredDelegatingHelloServlet</servlet-name>
+		<servlet-class>com.example.DelegatingHelloSpnegoServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SpnegoFilteredDelegatingHelloServlet</servlet-name>
+		<url-pattern>/filtered/delegating-spnego/*</url-pattern>
+	</servlet-mapping>
+
 	<filter>
 		<filter-name>SpnegoHttpFilter</filter-name>
 		<filter-class>net.sourceforge.spnego.SpnegoHttpFilter</filter-class>
@@ -73,6 +83,11 @@
 		<init-param>
 			<param-name>spnego.prompt.ntlm</param-name>
 			<param-value>false</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>spnego.allow.delegation</param-name>
+			<param-value>true</param-value>
 		</init-param>
 
 		<init-param>

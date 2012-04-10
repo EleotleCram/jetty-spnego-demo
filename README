@@ -24,6 +24,7 @@ Domain username password: Z3usP@55
 -->8--snip-->8--snip-->8---
 [libdefaults]
         default_realm = EXAMPLE.COM
+	forwardable = true
 
 [realms]
         EXAMPLE.COM = {
