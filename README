@@ -57,13 +57,13 @@ Available Servlets
 
 2) http://example.com:8080/spnego
 
-	Works like 1) but exposes the underlying code in a single file (for people how like to know how it works)
+	Works like 1) but exposes the underlying code in a single file (for people who like to know how it works).
 
 
 Notes
 =====
 
-1) If you're client is on a posix platform (linux, etc.), be sure to run 'kinit' first, otherwise you will not be able to authenticate.
+1) If your client is on a POSIX platform (Linux, etc.), be sure to run 'kinit' first, otherwise you will not be able to authenticate and the browsers won't tell you what is happening.
 2) In Windows you cannot run the server and the client on the same host, because Windows will try to use NTLM then, which you don't want because it's insecure.
 3) There are probably more caveats that I now fail to remember/mention, sorry about that.
 
