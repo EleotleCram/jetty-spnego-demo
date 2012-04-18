@@ -45,8 +45,8 @@ Domain username password: Z3usP@55
 Browser configuration:
 
 1) IE:  Configure trusted websites to include "http://example.com" and allow negotiation for that website (@TODO be more specific)
-2) Google-chrome:  start from command line with: google-chrome --auth-server-whitelist="*example.com"
-3) Firefox: go to about:config, "say you'll be careful", change the value for 'network.negotiate-auth.trusted-uris' into 'https://,http://example.com'
+2) Google-chrome:  start from command line with: google-chrome --auth-server-whitelist="*example.com" --auth-negotiate-delegate-whitelist="*example.com"
+3) Firefox: go to about:config, "say you'll be careful", change the value for 'network.negotiate-auth.trusted-uris' into 'https://,http://example.com' and the value for 'network.negotiate-auth.delegation-uris' into 'http://example.com'
 
 
 Build/Run Instructions
